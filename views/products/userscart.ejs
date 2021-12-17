@@ -1,0 +1,52 @@
+<%- layout("layouts/boilerplate") %>
+    <section>
+        <div class="row">
+            <div class="col-lg-8 m-1">
+                <h1>My-Cart</h1>
+                <% for(let product of user.Cart){ %>
+                    <div class="cart-items card mb-3 mx-auto" style="max-width: 540px;">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="<%=product.img%>" class="card-img" alt="">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-body">
+                                    <h5 class="card-title">
+                                        <%=product.name%>
+                                    </h5>
+                                    <p class="card-text"></p>
+                                    <p class="card-text"><small class="text-muted">
+                                            <%=product.desc%>
+                                        </small></p>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="submit" product-id="<%=product._id%>" class="btn btn-danger btn-sm mx-auto mb-2"
+                            id="Deletebtn" style="display:block;width:30%;">Remove</button>
+
+                    </div>
+                    <% } %>
+
+            </div>
+            <div class="col-lg-3">
+                <ul class="list-group"></ul>
+                <% for(let product of user.Cart){ %>
+
+                    <li class="list-group-item individualPrice"><span class="fw-bold">
+                            <%=product.name%>
+                        </span><span>
+                            Rs <%=product.price%>
+                        </span></li>
+                    <%}%>
+                        <li class="list-group-item totalPrice"><span class="fw-bold">
+                                Total-
+                            </span><span>
+                                Rs-<%=totalprice%>
+                            </span></li>
+
+                        </ul>
+                              <button class=" checkout mt-2 mx-auto submit btn-sm btn-success">checkout</button>
+                        
+            </div>
+        </div>
+    </section>
